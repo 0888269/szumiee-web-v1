@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>卓工协会 · 原型索引</title>
+<style>
+  :root{--ink:#2b2438;--muted:#6d6480;--line:#e6e0ef;--accent:#65509b}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:#f7f6fb;color:var(--ink);
+       font:15px/1.7 "Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+       display:flex;align-items:center;justify-content:center;padding:40px 20px}
+  main{width:min(880px,100%)}
+  h1{font-size:22px;line-height:1.4;margin:0 0 6px;font-weight:650}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  a.card{display:block;padding:22px;background:#fff;border:1px solid var(--line);
+         border-radius:14px;text-decoration:none;color:inherit;transition:.15s}
+  a.card:hover{border-color:#bda9d6;box-shadow:0 6px 20px #65509b18}
+  a.card h2{font-size:17px;margin:0 0 8px;font-weight:600;color:#3d3152}
+  a.card p{margin:0;font-size:13px;color:var(--muted)}
+  .tag{display:inline-block;margin-top:14px;padding:3px 9px;border-radius:6px;
+       background:#f1ecf9;color:#7b62a3;font-size:12px}
+  footer{margin-top:22px;font-size:13px;color:#8d84a0}
+</style>
+</head>
+<body>
+<main>
+  <h1>卓工协会 · 静态原型</h1>
+  <p class="sub">独立单文件页面，无外部依赖，可直接在浏览器中打开。</p>
+  <div class="grid">
+    <a class="card" href="admin-console.html">
+      <h2>管理员后台 UI 原型</h2>
+      <p>协会概览、学习路线、成员与部门、助教分配、工程师认证、资料云盘、Agent 配置等完整后台界面。</p>
+      <span class="tag">桌面端 · 后台</span>
+    </a>
+    <a class="card" href="pc-prototype.html">
+      <h2>PC 端可点击原型</h2>
+      <p>面向成员的 PC 客户端界面演示，可点击走通主要流程。</p>
+      <span class="tag">桌面端 · 客户端</span>
+    </a>
+  </div>
+  <footer>演示数据均为样例，不连接真实服务。</footer>
+</main>
+</body>
+</html>
