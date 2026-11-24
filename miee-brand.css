@@ -1,0 +1,18 @@
+/* Logo samples at (160,1000) and (2100,1000), original 2230×2481 PNG. */
+:root{--brand-blue:#2e569d;--brand-purple:#6e4d95;--brand-gradient:linear-gradient(90deg,var(--brand-blue) 0%,var(--brand-purple) 100%);--quest-accent:var(--brand-blue);--quest-gold:var(--brand-purple)}
+.content{--accent:var(--brand-blue)}
+.product-showcase{--brand-blue:#2e569d;--brand-purple:#6e4d95;--brand-gradient:linear-gradient(90deg,var(--brand-blue),var(--brand-purple))}
+.quest-copy h1 em,.quest-eyebrow,.quest-brand b,.quest-stop.active b,.quest-stop.active span,.quest-stats strong,.quest-bridge h2,.quest-bridge p,.quest-bridge a,.sw-big .ln,.sw-quote .ln,.nums-title,.num b,.num-i,.sw-label span,.miee-missions span,.features>li:before,.course-trigger:hover,.course-trigger[aria-expanded=true],.story-copy>.label,.story-copy a,.story-heading>.label,.story-count,.miee-section-inner h2,.story-heading h2,.sw-word{background-image:var(--brand-gradient);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-size:100% 100%}
+.quest-eyebrow,.quest-brand b,.miee-missions span,.num-i,.miee-section-inner h2,.story-heading h2{width:fit-content}
+.quest-exp span,.quest-scroll-exit,.quest-eyebrow:before,.quest-offline:before,.quest-wheel i:after,.quest-stop.active:before,.works-dots button.on,.btn,.btn-ink,.works-btn,.story-progress span{background:var(--brand-gradient)!important}
+.quest-stop.active:before{border-color:var(--brand-blue);box-shadow:0 0 0 4px #6e4d9515}
+.quest-slot.on{color:var(--brand-purple);border-color:var(--brand-blue);box-shadow:3px 3px 0 #6e4d9520;background:#f5f4fb}
+.quest-landmark.active{color:var(--brand-purple);border-color:var(--brand-purple)}
+.quest-skip:hover,.quest-skip:focus-visible{color:var(--brand-purple);border-color:var(--brand-blue)}
+.quest-wheel i{border-color:#9498ae}.quest-bridge{border-color:#dde0eb}
+.quest-mark{border-color:var(--brand-blue);box-shadow:4px 4px 0 #6e4d9530}.quest-mark:before,.quest-mark:after{background:var(--brand-gradient)}
+.course-trigger{position:relative}.course-trigger:after{content:'';position:absolute;height:2px;bottom:0;left:0;right:0;background:var(--brand-gradient);transform:scaleX(0);transform-origin:left;transition:transform .3s}.course-trigger:hover:after,.course-trigger[aria-expanded=true]:after{transform:scaleX(1)}
+.btn,.btn-ink{color:#fff;-webkit-text-fill-color:#fff;box-shadow:0 10px 24px #2e569d20}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brand-blue);outline-offset:5px}
+.story-prev:hover,.story-next:hover{background:var(--brand-gradient)}
+@media(max-width:760px){.quest-stats{background:#f4f6fbe8}}

@@ -1,444 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN" data-geo="CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>医工卓工营 – The Photoshop alternative for Mac</title>
-    <meta name="description" content="医工融合，卓越领航. A Photoshop alternative for Mac.">
-    <link rel="icon" type="image/png" href="./static/zhuogongying/club-logo.png">
-    <link rel="apple-touch-icon" href="./static/zhuogongying/club-logo.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="./compositor">
-    <meta property="og:title" content="医工卓工营 – The Photoshop alternative for Mac">
-    <meta property="og:description" content="医工融合，卓越领航.">
-    <meta property="og:image" content="./static/zhuogongying/social-media-thumbnail.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="./compositor">
-    <meta name="twitter:title" content="医工卓工营 – The Photoshop alternative for Mac">
-    <meta name="twitter:description" content="医工融合，卓越领航.">
-    <meta name="twitter:image" content="./static/zhuogongying/social-media-thumbnail.png">
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJLNT4KQ5Y"></script>
-    <script src="./static/js/googleAnalytics.js"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; background: #fff; color: #000; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        img { display: block; }
-        a { color: inherit; text-decoration: none; }
-        ::selection { background: #0a84ff; color: #fff; }
-
-        /* ---------- NAV ---------- */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 46px 0;
-            font-size: 16px;
-            line-height: 20px;
-        }
-        .nav-back { display: flex; align-items: center; gap: 6px; color: #272727; transition: opacity .15s ease; }
-        .back-arrow { width: 18px; height: 18px; }
-        .nav-back:hover { opacity: .6; }
-        .nav-date { color: #b5b5b5; }
-
-        /* ---------- HERO ---------- */
-        .hero { text-align: center; padding-top: 112px; }
-        .hero h1 {
-            margin: 0;
-            font-size: 72px;
-            line-height: 75px;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-        .hero .sub {
-            margin: 14px 0 0;
-            font-size: 28px;
-            line-height: 36px;
-            font-weight: 400;
-            color: #7a7a7a;
-            letter-spacing: -0.005em;
-        }
-
-        .buttons { display: flex; justify-content: center; gap: 14px; }
-        .hero .buttons { margin-top: 55px; }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            height: 53px;
-            border-radius: 999px;
-            font-size: 15px;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: transform .15s ease, opacity .15s ease;
-        }
-        .btn:hover { transform: scale(1.03); }
-        .btn img { width: 20px; height: 20px; }
-        .btn-download { width: 200px; background: #000; color: #fff; }
-        .btn-download img { filter: invert(1); margin-top: -2px; }
-
-        /* Hover: example images flash through the black fill */
-        .btn-download { position: relative; overflow: hidden; isolation: isolate; }
-        .btn-download::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            opacity: 0;
-            background: url('./static/zhuogongying/example1.png') center / cover no-repeat;
-        }
-        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-            .btn-download:hover::before {
-                opacity: 1;
-                animation: btn-flash 0.64s step-end infinite;
-            }
-        }
-        @keyframes btn-flash {
-            0%     { background-image: url('./static/zhuogongying/example1.png'); background-size: 180%; background-position: 20% 30%; }
-            12.5%  { background-image: url('./static/zhuogongying/example2.png?v=suc'); background-size: 260%; background-position: 50% 45%; }
-            25%    { background-image: url('./static/zhuogongying/example3.png'); background-size: 150%; background-position: 80% 20%; }
-            37.5%  { background-image: url('./static/zhuogongying/example4.png'); background-size: 320%; background-position: 45% 55%; }
-            50%    { background-image: url('./static/zhuogongying/example2.png?v=suc'); background-size: 140%; background-position: 10% 70%; }
-            62.5%  { background-image: url('./static/zhuogongying/example1.png'); background-size: 300%; background-position: 70% 40%; }
-            75%    { background-image: url('./static/zhuogongying/example4.png'); background-size: 200%; background-position: 30% 80%; }
-            87.5%  { background-image: url('./static/zhuogongying/example3.png'); background-size: 240%; background-position: 60% 10%; }
-        }
-        .btn-github { width: 195px; background: #fff; color: #000; border: 1.5px solid #dcdcdc; }
-        .btn-github img { width: 18px; height: 18px; }
-
-        .hero-image { margin: 8px auto 0; width: 100%; max-width: 1477px; overflow: visible; }
-        /* Scale proportionally so the complete hero image remains visible. */
-        .hero-image img { display: block; width: 100%; height: auto; margin: 0 auto; }
-
-        /* ---------- PURPOSE ---------- */
-        .purpose { display: flex; margin-top: 122px; }
-        .gallery { position: relative; width: 50%; overflow: hidden; }
-        .gallery-track { position: absolute; inset: 0; display: flex; flex-direction: column; }
-        .gallery-track img { flex: 1 1 0; min-height: 0; width: 100%; object-fit: cover; }
-        .gallery-track .dup { display: none; }
-        .gallery.three .extra { display: none; }
-
-        .info {
-            width: 50%;
-            background: #f1f1f1;
-            padding: 76px 7.5vw 76px 8vw;
-            border-left: 1px solid #000;
-        }
-        .label {
-            margin: 0;
-            font-size: 11px;
-            line-height: 14px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            color: #e4312b;
-            text-transform: uppercase;
-        }
-        .info h2 {
-            max-width: 520px;
-            margin: 18px 0 0;
-            font-size: clamp(32px, 3.25vw, 54px);
-            line-height: 1.03;
-            font-weight: 700;
-            letter-spacing: -0.055em;
-        }
-        .copy { max-width: 560px; margin-top: 42px; counter-reset: item; }
-        .copy p {
-            position: relative;
-            margin: 0;
-            padding: 16px 0 16px 42px;
-            font-size: 17px;
-            line-height: 1.65;
-            color: #171717;
-            border-top: 1px solid #111;
-        }
-        .copy p::before {
-            counter-increment: item;
-            content: "0" counter(item);
-            position: absolute;
-            left: 0;
-            top: 19px;
-            font-size: 11px;
-            line-height: 1;
-            font-weight: 700;
-            letter-spacing: .08em;
-            color: #e4312b;
-        }
-        .copy p:last-child { border-bottom: 1px solid #111; }
-
-        .features {
-            list-style: none;
-            margin: 58px 0 0;
-            padding: 0;
-            max-width: 560px;
-            border-top: 2px solid #111;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: 28px;
-            counter-reset: course;
-        }
-        .features li {
-            display: flex;
-            align-items: center;
-            height: 46px;
-            padding-left: 0;
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            color: #111;
-            background: transparent;
-            border-bottom: 1px solid #bdbdbd;
-        }
-        .features li::before {
-            counter-increment: course;
-            content: counter(course, decimal-leading-zero);
-            width: 28px;
-            margin-right: 12px;
-            flex: 0 0 28px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: .06em;
-            color: #e4312b;
-        }
-        .features li:last-child {
-            grid-column: 1 / -1;
-            justify-content: center;
-            border-bottom: 0;
-        }
-        .features li:last-child::before { display: none; }
-        .features img { display: none; }
-
-        /* ---------- FOOTER ---------- */
-        .footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 114px 70px 110px 65px;
-        }
-        .footer-brand { display: flex; align-items: center; gap: 20px; }
-        .footer-brand img { width: 79px; height: 79px; }
-        .footer-brand span { font-size: 30px; line-height: 36px; font-weight: 500; letter-spacing: -0.01em; }
-
-        .legal {
-            margin: 0;
-            padding: 10px 20px 10px;
-            text-align: center;
-            font-size: 12px;
-            line-height: 16px;
-            color: #b5b5b5;
-            border-top: 1px dotted #eeeeee;
-        }
-
-        /* ---------- TABLET ---------- */
-        @media (max-width: 1100px) {
-            .hero h1 { font-size: 60px; line-height: 64px; }
-            .hero .sub { font-size: 24px; }
-            .info { padding: 60px 40px 50px 50px; }
-        }
-
-        /* ---------- MOBILE ---------- */
-        @media (max-width: 768px) {
-            .nav { padding: 20px 20px; line-height: 38px; }
-            .nav-back { font-size: 18px; }
-            .nav-date { color: #ccc; }
-
-            .hero { padding-top: 60px; display: flex; flex-direction: column; padding-bottom: 20px; }
-            .hero .buttons { order: 3; }
-            .hero h1 { font-size: calc((100vw - 50px) / 8.75); line-height: 1.02; }
-            .hero .sub { margin-top: 14px; font-size: 17.5px; line-height: 22px; }
-
-            .hero-image {
-                position: relative;
-                margin-top: 20px;
-                width: 100%;
-                padding-bottom: 78.3%;
-                overflow: hidden;
-            }
-            .hero-image img {
-                position: absolute;
-                width: 190.5%;
-                max-width: none;
-                margin-left: 0;
-                transform: none;
-                left: -44.25%;
-                top: -9.5%;
-            }
-
-            .buttons { flex-direction: column; align-items: center; gap: 8px; }
-            .hero .buttons { margin-top: 40px; }
-            .btn { height: 45px; gap: 9px; font-size: 14px; }
-            .btn img { width: 17.5px; height: 17.5px; }
-            .btn-github img { width: 16px; height: 16px; }
-            .btn-download { width: 190px; }
-            .btn-github { width: 190px; border-width: 1px; }
-
-            .purpose { flex-direction: column; margin-top: 35px; }
-
-            .gallery { width: 100%; pointer-events: none; touch-action: pan-y; }
-            .gallery.three .extra { display: block; }
-            .gallery-track {
-                position: static;
-                flex-direction: row;
-                width: max-content;
-                animation: carousel 48s linear infinite;
-                will-change: transform;
-            }
-            .gallery-track img,
-            .gallery-track .dup {
-                display: block;
-                flex: none;
-                width: 100vw;
-                height: calc(100vw * 0.6617);
-                object-fit: cover;
-            }
-
-            .info { width: 100%; padding: 42px 29px 40px; border-left: 0; border-top: 1px solid #000; }
-            .label { font-size: 11.5px; line-height: 17px; }
-            .info h2 { margin-top: 12px; font-size: 30px; line-height: 1.08; letter-spacing: -0.04em; }
-            .copy { max-width: none; margin-top: 27px; }
-            .copy p { font-size: 15px; line-height: 1.6; margin-bottom: 0; padding: 13px 0 13px 36px; }
-            .copy p::before { top: 17px; }
-            .features { margin-top: 40px; max-width: none; grid-template-columns: 1fr; column-gap: 0; }
-            .features li { height: 44px; font-size: 14px; padding-left: 0; }
-
-            .footer { flex-direction: column; padding: 60px 25px 80px; }
-            .footer-brand { flex-direction: column; gap: 14px; }
-            .footer-brand img { width: 81px; height: 81px; }
-            .footer-brand span { font-size: 30px; line-height: 36px; }
-            .footer .buttons { margin-top: 50px; }
-        }
-
-        @keyframes carousel {
-            from { transform: translate3d(0, 0, 0); }
-            to   { transform: translate3d(-50%, 0, 0); }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eaf4fa">
+  
+  <title>医工卓工营 · 工程师成长之路</title>
+  <meta name="description" content="深圳大学医工融合卓越工程师协会，为工程实践提供资源与指导。了解医工卓工营、产品平台与五级工程师成长之路。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="医工卓工营">
+  <meta property="og:title" content="医工卓工营 · 医工融合，卓越领航">
+  <meta property="og:description" content="深圳大学医工融合卓越工程师协会 · 工程实践课程与产品平台">
+  <meta property="og:image" content="assets/miee/hero.png">
+  <link rel="icon" type="image/png" href="assets/miee/club-logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="os.css">
+  <link rel="stylesheet" href="about.css">
+  <script type="importmap">
+    { "imports": {
+      "three": "/vendor/three/build/three.module.js",
+      "three/addons/": "/vendor/three/examples/jsm/"
+    } }
+  </script>
+<link rel="stylesheet" href="assets/fonts/jetbrains-mono.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' data: blob:; frame-src 'none'; object-src 'none'">
+<link rel="stylesheet" href="pixel-hero.css?v=celestial-1">
+<link rel="stylesheet" href="miee.css?v=1">
+<link rel="stylesheet" href="miee-brand.css?v=logo-1">
+<link rel="stylesheet" href="learning-path.css?v=vertical-center-7">
+<link rel="stylesheet" href="text-legibility-fixes.css?v=1">
+<link rel="stylesheet" href="about-layout.css?v=about-2">
+<link rel="stylesheet" href="entrance.css?v=entrance-1">
 </head>
-<body>
+<body class="ready entered">
+  <!-- one SVG icon set for the whole site (text arrows turn into emoji on phones) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4v5h-5"/></symbol>
+  </svg>
 
-    <nav class="nav">
-        <span class="nav-back" aria-hidden="true"></span>
-        <span class="nav-date" id="nav-date" aria-hidden="true"></span>
-    </nav>
-
-    <header class="hero">
-        <h1>医工融合<br>卓越工程师训练营</h1>
-        <p class="sub">医工融合，卓越领航</p>
-
-        <div class="buttons">
-            <a class="btn btn-download" href="dengluye.html">进入Web版</a>
-            <a class="btn btn-github" href="https://github.com/0888269" target="_blank" rel="noopener">下载应用</a>
-        </div>
-
-        <div class="hero-image">
-            <img src="./static/zhuogongying/hero.png" alt="医工卓工营 running on a Mac">
-        </div>
-    </header>
-
-    <section class="purpose">
-        <div class="gallery" aria-hidden="true">
-            <div class="gallery-track">
-                <img src="./static/zhuogongying/example1.png" alt="">
-                <img src="./static/zhuogongying/example2.png?v=suc" alt="">
-                <img src="./static/zhuogongying/example3.png" alt="">
-                <img class="extra" src="./static/zhuogongying/example4.png" alt="">
-                <img class="dup" src="./static/zhuogongying/example1.png" alt="">
-                <img class="dup" src="./static/zhuogongying/example2.png?v=suc" alt="">
-                <img class="dup" src="./static/zhuogongying/example3.png" alt="">
-                <img class="dup" src="./static/zhuogongying/example4.png" alt="">
-            </div>
-        </div>
-
-        <div class="info">
-            <p class="label">Purpose</p>
-            <h2>医工卓工营管理平台</h2>
-            <div class="copy">
-                <p>基于卓越工程师培养体系，为卓越工程师训练营有组织、系统性地提供工程实践的资源和指导；</p>
-                <p>建立完善的管理架构，稳步推进整体运营；</p>
-                <p>设立工程师认证体系，提供工程师等级认证证书；</p>
-                <p>举办产学研系列主题活动，连接各方资源。</p>
-            </div>
-
-            <ul class="features">
-                <li><img src="./static/zhuogongying/ic-layer.png" alt="">电路设计制作</li>
-                <li><img src="./static/zhuogongying/ic-folderspng.png" alt="">C语言程序设计</li>
-                <li><img src="./static/zhuogongying/ic-layer-maks.png" alt="">51单片机入门</li>
-                <li><img src="./static/zhuogongying/ic-clipping-masks.png" alt="">32位单片机基础</li>
-                <li><img src="./static/zhuogongying/ic-blend-modes.png" alt="">医学电子学</li>
-                <li><img src="./static/zhuogongying/ic-selection-tools.png" alt="">医学信号处理</li>
-                <li><img src="./static/zhuogongying/ic-adjustment-layers.png" alt="">医用仪器软件设计</li>
-                <li><img src="./static/zhuogongying/ic-filters.png" alt="">多参监护硬件系统</li>
-                <li><img src="./static/zhuogongying/ic-background-removal.png" alt="">多参监护嵌入式算法</li>
-                <li><img src="./static/zhuogongying/ic-gaussian-blur.png" alt="">多参监护上位机软件</li>
-                <li><img src="./static/zhuogongying/ic-motion-blur.png" alt="">三参数监护系统</li>
-                <li><img src="./static/zhuogongying/ic-lens-correction.png" alt="">单片机高阶</li>
-                <li><img src="./static/zhuogongying/ic-grain-noise.png" alt="">微机原理</li>
-                <li><img src="./static/zhuogongying/ic-liquify.png" alt="">实时操作系统</li>
-                <li><img src="./static/zhuogongying/ic-spot-healing.png" alt="">Linux基础开发</li>
-                <li><img src="./static/zhuogongying/ic-clone-stamp.png" alt="">AI工具基础</li>
-                <li><img src="./static/zhuogongying/ic-brush.png" alt="">......</li>
-            </ul>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-brand">
-            <img src="./static/zhuogongying/club-logo.png" alt="医工卓工营 app icon">
-            <span>医工卓工营</span>
-        </div>
-        <div class="buttons">
-            <a class="btn btn-download" href="dengluye.html">进入Web版</a>
-            <a class="btn btn-github" href="https://github.com/0888269" target="_blank" rel="noopener">下载应用</a>
-        </div>
-    </footer>
-
-    <p class="legal">凡有所学，皆成性格。与你一同走过成为卓越工程师的路。</p>
-
-    <script>
-
-        // Google Analytics: count clicks on all Download buttons and all GitHub buttons
-        document.querySelectorAll('.btn-download, .btn-github').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                if (typeof gtag !== 'function') return;
-                var name = btn.classList.contains('btn-download') ? 'download_click' : 'github_click';
-                gtag('event', name, { transport_type: 'beacon' });
-            });
-        });
-
-        // Desktop: use 3 or 4 example images, whichever needs less cropping to fill the panel height.
-        (function () {
-            var gallery = document.querySelector('.gallery');
-            var ratio = 1456 / 816;
-            function fit() {
-                var w = gallery.offsetWidth, h = gallery.offsetHeight;
-                if (!w || !h) return;
-                var natural = w / ratio;
-                var three = Math.abs(Math.log((h / 3) / natural));
-                var four = Math.abs(Math.log((h / 4) / natural));
-                gallery.classList.toggle('three', three <= four);
-            }
-            window.addEventListener('resize', fit);
-            window.addEventListener('load', fit);
-            fit();
-        })();
-    </script>
-
-</body>
-</html>
+<section class="quest" id="quest" aria-label="学生到卓越工程师的像素成长之路">
+ <div class="quest-stage">
+  <canvas class="quest-canvas" id="quest-canvas" aria-label="像素学生沿五级云端石阶成长为商务装卓越工程师，滚动页面推进动画"></canvas>
+  <nav class="quest-nav" aria-label="首屏导航">
+   <a class="quest-brand" href="#quest"><img class="quest-logo" src="assets/miee/club-logo.png" width="40" height="45" alt="深圳大学医工融合卓越工程师协会 Logo"><span><b>医工卓工营</b><small>MIEE · 医工融合，卓越领航</small></span></a>
+   <div class="quest-actions"><span class="quest-offline">CELESTIAL ASCENT / 云上成长</span><button class="quest-skip" id="quest-skip" type="button">跳过旅程 ↗</button></div>
+  </nav>
+  <div class="quest-copy">
+   <p class="quest-eyebrow">MIEE / 卓越工程师训练营</p>
+   <h1 id="quest-title">每个工程师，<br>都曾是<em>小白。</em></h1>
+   <p class="quest-desc" id="quest-desc">凡有所学，皆成性格。<br>与你一同走过成为卓越工程师的路。</p>
+   <div class="quest-inventory" aria-label="五级成长装备"><span class="quest-slot on">Ⅰ</span><span class="quest-slot">Ⅱ</span><span class="quest-slot">Ⅲ</span><span class="quest-slot">Ⅳ</span><span class="quest-slot">Ⅴ</span></div>
+  </div>
+  <span class="quest-worldlabel">WORLD 01 · THE ASCENT</span>
+  <div class="quest-stats" aria-live="polite"><small id="quest-level">LEVEL 01 / 05</small><strong id="quest-rank">小白</strong><p id="quest-equipment">主动学习 · 问题发现</p><div class="quest-exp"><span id="quest-xp"></span></div></div>
+  <div class="quest-footer">
+   <nav class="quest-timeline" aria-label="成长阶段"><button class="quest-stop active" type="button" aria-label="前往小白"><span>LV.01</span><b>小白</b></button><button class="quest-stop " type="button" aria-label="前往初级工程师"><span>LV.02</span><b>初级工程师</b></button><button class="quest-stop " type="button" aria-label="前往中级工程师"><span>LV.03</span><b>中级工程师</b></button><button class="quest-stop " type="button" aria-label="前往高级工程师"><span>LV.04</span><b>高级工程师</b></button><button class="quest-stop " type="button" aria-label="前往卓越工程师"><span>LV.05</span><b>卓越工程师</b></button></nav>
+   <div class="quest-bottom"><span class="quest-wheel"><i aria-hidden="true"></i> 向下滚动，踏上成长之路 · 向上滚动可回溯</span><span id="quest-progress">000%</span><span>STAY CURIOUS. KEEP BUILDING.</span></div>
+  </div>
+  <p class="quest-fallback" hidden>当前浏览器无法创建 3D 场景。可点击「跳过旅程」继续浏览下方内容。</p>
+  <div class="quest-scroll-exit"></div>
+ </div>
+</section>
+<section class="quest-bridge" id="quest-bridge"><div><p>QUEST COMPLETE / 新的旅程</p><h2>医工融合，卓越领航。<br>下一步，把想法变成作品。</h2></div><a href="#about">继续探索 ↓</a>
+  <div class="entrance-row" role="group" aria-label="平台入口">
+    <button class="entrance-button entrance-web" type="button"><span>进入web版</span></button>
+    <button class="entrance-button" type="button"><span>管理员后台</span></button>
+    <button class="entrance-button" type="button"><span>全国bme协会</span></button>
+  </div>
+</section>
+<main class="content" id="content">
+<section class="sw sw-about" id="about" aria-labelledby="about-title">
+<div class="sw-hero"><div class="sw-hero-in">
+<header class="sw-head sw-grid"><p class="sw-label"><span>(01)</span> 关于协会</p><p class="sw-label sw-r">深圳大学 · MIEE</p></header>
+<div class="about-editorial">
+<h2 class="sw-big" id="about-title" data-split data-early><span class="ln">医工融合，</span><span class="ln">卓越领航。</span></h2>
+<div class="about-details">
+<div class="about-identity"><img src="assets/miee/club-logo.png?v=about-2" alt="深圳大学医工融合卓越工程师协会标志" width="2230" height="2481"><h3><span>深圳大学医工融合</span><span>卓越工程师协会</span></h3></div>
+<p class="about-summary">基于卓越工程师培养体系，有组织、系统性地提供工程实践的资源和指导。</p>
+<div class="miee-missions"><p><span>01</span>基于卓越工程师培养体系，为卓越工程师训练营有组织、系统性地提供工程实践的资源和指导；</p><p><span>02</span>建立完善的管理架构，稳步推进整体运营；</p><p><span>03</span>设立工程师认证体系，提供工程师等级认证证书；</p><p><span>04</span>举办产学研系列主题活动，连接各方资源。</p></div>
+</div></div></div></div>
+<figure class="about-illustration" aria-label="医工融合工程实践全景"><img src="assets/miee/about-illustration.png?v=about-2" alt="医工融合工程实践：电路设计、微控制器程序设计、生物医学信号处理及软件交互界面设计" width="1029" height="506" loading="lazy"></figure>
+<div class="sw-rest">
+<p class="sw-quote sw-grid" data-split><span class="ln c1">凡有所学，</span><span class="ln c5">皆成性格。</span><span class="ln c2">与你一同</span><span class="ln c5">走过成长之路。</span></p></div>
+</section>
+<section class="sw-numbers learning-path" id="numbers" aria-labelledby="nums-title"><div class="nums-stage" data-mesh data-brand-mesh><div class="nums-track"><div class="nums-intro"><p class="sw-label"><span>(02)</span> 学习路径</p><h2 class="nums-title" id="nums-title">医工融合<br>十五年探索</h2></div><button class="num path-toggle" type="button" id="path-year-2011" aria-expanded="false" aria-controls="path-panel-2011"><span class="num-i">01</span><b class="path-year">2011</b><span class="num-l">卓越工程师培养<span class="path-version">1.0</span></span></button><button class="num path-toggle" type="button" id="path-year-2022" aria-expanded="false" aria-controls="path-panel-2022"><span class="num-i">02</span><b class="path-year">2022</b><span class="num-l">卓越工程师培养<span class="path-version">2.0</span></span></button><button class="num path-toggle" type="button" id="path-year-2026" aria-expanded="false" aria-controls="path-panel-2026"><span class="num-i">03</span><b class="path-year">2026</b><span class="num-l">卓越工程师培养<span class="path-version">3.0</span></span></button><button class="num path-toggle" type="button" id="path-year-2030" aria-expanded="false" aria-controls="path-panel-2030"><span class="num-i">04</span><b class="path-year">2030</b><span class="num-l">卓越工程师培养<span class="path-version">4.0</span></span></button></div><div class="nums-fade" aria-hidden="true"></div><div class="path-panels"><div class="path-panel" id="path-panel-2011" role="region" aria-labelledby="path-year-2011" aria-hidden="true" inert><div class="path-clip"><div class="path-body"><p><strong>人才培养目标：研发工程师</strong></p><p>知识获取 → 能力培养</p><p>理论 → 实践</p></div></div></div><div class="path-panel" id="path-panel-2022" role="region" aria-labelledby="path-year-2022" aria-hidden="true" inert><div class="path-clip"><div class="path-body"><p><strong>人才培养目标：产品经理 / 研发总监</strong></p><p>工程实践的延伸 · 场景应用</p><p>准产品 → 常规产品</p><ul><li>黄疸仪、盆底康复、脑疗仪、肺功能仪、掌式血氧仪</li><li>动态血压计、动态心电记录仪、呼吸机、腹膜透析机</li></ul></div></div></div><div class="path-panel" id="path-panel-2026" role="region" aria-labelledby="path-year-2026" aria-hidden="true" inert><div class="path-clip"><div class="path-body"><p><strong>人才培养目标：创业者 / 企业家</strong></p><p>解决临床及市场痛点的延伸 · 创新挑战</p><p>创新类产品</p><ul><li>灵动动物医疗、梦马创新、蓝知医疗、肛刚好二期</li><li>Nor-AIJism、颌悦、呼呼小将</li><li>Coolsense、肛刚好一期、脊自由</li></ul></div></div></div><div class="path-panel" id="path-panel-2030" role="region" aria-labelledby="path-year-2030" aria-hidden="true" inert><div class="path-clip"><div class="path-body"><p>素材 PPT 将 2030 标为时间轴终点，对应 2026—2030 年的卓越工程师培养 3.0：创新应用场景、创新挑战与创新类产品。</p><p>原稿未列出 2030 年独立的新阶段或新增课程。</p></div></div></div></div></div></section>
+<section class="works" id="work" aria-labelledby="work-title"><div class="works-stage"><canvas class="works-gl" aria-hidden="true"></canvas><p class="sw-label works-note"><span>(03)</span> 实践视野</p><div class="works-copy"><h2 class="works-title" id="work-title">40+课程教材</h2><p class="works-sub">电路设计 · C语言 · 单片机</p><a class="btn works-btn" href="https://space.bilibili.com/644323919?spm_id_from=333.788.upinfo.head.click" target="_blank" rel="noopener noreferrer">观看视频 ↗</a></div><nav class="works-dots" aria-label="实践方向"><button type="button" class="on" aria-label="40+课程教材"></button><button type="button" aria-label="10+开发系统平台"></button><button type="button" aria-label="丰富多彩的活动"></button><button type="button" aria-label="存放每一瞬间"></button></nav></div></section>
+<footer class="sw sw-foot" id="contact" aria-label="医工卓工营 · 一同成长"><div class="sw-formwrap" data-reveal><div class="sw-formcard miee-join" data-mesh><p class="f-sub">MIEE · 医工卓工营</p><h3>与你一同走过<br>成为卓越工程师的路。</h3><p>课程学习、工程实践、等级认证与产学研活动，连接成长的每一步。</p><a class="btn btn-ink" href="#about">了解协会 ↗</a><p class="miee-local-note">本地展示版 · 账号登录与报名服务未接入。</p></div></div><div class="sw-end sw-grid"><p class="sw-label">医工卓工营 · 深圳大学医工融合卓越工程师协会</p><button class="sw-replay" id="replay" type="button">重走成长之路 ↻</button></div><p class="sw-word" aria-hidden="true">医工卓工营</p></footer></main>
+<script>window.L=(a,b)=>a;if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reduce-motion');</script>
+<script type="module" src="pixel-hero.js?v=celestial-flow-3"></script><script type="module" src="works.js?v=chapters-2"></script><script type="module" src="mesh.js"></script><script type="module" src="content.js?v=inline-resize-6"></script><script src="learning-path.js?v=vertical-center-7"></script></body></html>

@@ -1,0 +1,38 @@
+/* Three consecutive, non-overlapping editorial pages. content.js retains its
+   split/reveal observers; the old sticky hero and negative margin are retired. */
+#about { padding-bottom:clamp(56px,6vw,110px); }
+#about .sw-hero {height:auto;margin-bottom:0;}
+#about .sw-hero-in {position:relative;top:auto;height:auto;min-height:100svh;box-sizing:border-box;display:flex;justify-content:center;padding:clamp(56px,7vh,100px) 0;}
+#about .sw-head {margin-bottom:clamp(36px,5vh,64px);}
+.about-editorial {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(36px,5vw,80px);padding:0 var(--m);align-items:center;}
+#about-title {font-size:clamp(48px,5.9vw,100px);display:block;min-width:0;}
+#about-title > .ln {white-space:nowrap;padding-left:0!important;line-height:1.3;}
+#about-title > .ln + .ln {margin-top:.22em;}
+.about-details {min-width:0;background:var(--paper);}
+.about-identity {display:flex;align-items:center;gap:16px;}
+.about-identity img {display:block;flex:none;width:52px;height:58px;object-fit:contain;}
+.about-identity h3 {margin:0;font-size:clamp(20px,1.8vw,28px);font-weight:650;line-height:1.5;letter-spacing:.02em;}
+.about-identity h3 span {display:block;white-space:nowrap;}
+.about-summary {font-size:clamp(16px,1.25vw,19px);line-height:1.85;color:var(--ink2);margin:24px 0 30px;}
+#about .miee-missions {margin:0;}
+#about .miee-missions p {margin:0;padding:15px 0;display:grid;grid-template-columns:25px minmax(0,1fr);gap:16px;font-size:15px;line-height:1.85;}
+#about .miee-missions p:last-child {border-bottom:1px solid var(--line);}
+#about .miee-missions span {font-size:12px;padding-top:3px;}
+.about-illustration {position:relative;isolation:isolate;background:white;margin:0;min-height:100svh;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding:clamp(24px,5vw,80px) var(--m);border-top:1px solid var(--line);}
+.about-illustration img {display:block;object-fit:contain;width:100%;height:auto;max-width:1280px;max-height:calc(100svh - 100px);}
+#about .sw-rest {padding-top:clamp(40px,5vw,80px);background:var(--paper);border-radius:0;box-shadow:none;border-top:1px solid var(--line);}
+#about .sw-quote {margin-top:0;}
+@media(max-width:800px) {
+ #about .sw-hero-in {padding:56px 0 44px;}
+ #about .sw-head {margin-bottom:28px;}
+ .about-editorial {grid-template-columns:1fr;gap:32px;}
+ #about-title {font-size:clamp(32px,10vw,70px)!important;}
+ #about-title > .ln + .ln {margin-top:0;margin-left:8%;}
+ .about-identity {gap:12px;}
+ .about-identity img {width:38px;height:44px;}
+ .about-identity h3 {font-size:clamp(17px,4.7vw,25px);line-height:1.5;letter-spacing:0;}
+ .about-summary {font-size:16px;margin:20px 0 24px;line-height:1.85;}
+ #about .miee-missions p {font-size:15px;gap:12px;padding:14px 0;grid-template-columns:22px minmax(0,1fr);}
+ .about-illustration {padding:32px 16px;}
+ .about-illustration img {max-height:calc(100svh - 64px);}
+}

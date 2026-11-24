@@ -1,0 +1,54 @@
+/* CJK display text needs full em-height: the original Latin .84/.86
+   leading clipped gradient fills and made adjacent rows collide.
+   Keep the existing fonts, split reveals, staggered grid and brand gradient. */
+#about-title > .ln,
+.sw-about .sw-quote > .ln {
+  line-height: 1.25;
+  padding-block: .06em;
+  min-width: 0;
+}
+#about-title .w,
+.sw-about .sw-quote .w {
+  /* Preserve the reveal mask, with enough room for CJK ink and blur. */
+  line-height: inherit;
+  overflow-clip-margin: .25em;
+}
+.sw-about .sw-quote {
+  /* Keep the last row clear of the following sticky gradient band. */
+  padding-bottom: .18em;
+}
+/* Limit five full-width CJK characters to the existing intro column.
+   This does not change the learning-path track, years or disclosure panels. */
+#nums-title {
+  font-size: clamp(36px, 7vw, 120px);
+  line-height: 1.25;
+  padding-block: .06em;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+@media (max-width: 800px) {
+  #about-title {
+    font-size: clamp(30px, 12vw, 84px) !important;
+  }
+  .sw-about .sw-quote {
+    font-size: clamp(25px, 10vw, 64px) !important;
+  }
+  #about-title > .ln,
+  .sw-about .sw-quote > .ln {
+    grid-column: 1 / -1 !important;
+    white-space: nowrap;
+  }
+  #about-title > .ln.c5 {
+    padding-left: 8% !important;
+  }
+  .sw-about .sw-quote > .ln.c5 {
+    padding-left: 6% !important;
+  }
+  .sw-about .sw-quote > .ln.c2 {
+    padding-left: 3% !important;
+  }
+  #nums-title {
+    font-size: clamp(28px, 10vw, 64px) !important;
+    line-height: 1.25;
+  }
+}

@@ -1,0 +1,29 @@
+/* Preserve the original sticky mesh band, horizontal track and staggered years. */
+.learning-path .nums-stage{background:var(--brand-gradient)}
+.learning-path .nums-track{padding-right:0;transform:translate3d(var(--path-tx,var(--tx,0px)),0,0)}
+.learning-path .num{width:25vw;min-width:0;padding:0 1.4vw;appearance:none;background:none;color:#fff;text-align:left;cursor:pointer;border-top:0;border-right:0;border-bottom:0;border-radius:0;font:inherit;translate:0 var(--year-offset,9vh)}
+.learning-path .num b,.learning-path .num-i,.learning-path .nums-title,.learning-path .sw-label span{background:none;color:#fff;-webkit-text-fill-color:#fff}
+.learning-path .num b{display:block;position:absolute;left:50%;top:50%;width:max-content;transform:translate(-50%,-50%);writing-mode:vertical-lr;text-orientation:upright;font:850 clamp(90px,11vh,150px)/1 "Coolvetica HC","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.08em;white-space:nowrap}
+.learning-path .num-l{position:absolute;top:50%;bottom:auto;left:calc(50% + clamp(90px,11vh,150px)/2 + 10px);right:auto;transform:translateY(-50%);margin:0;writing-mode:vertical-rl;text-orientation:upright;white-space:nowrap;letter-spacing:.12em;font-size:15px;line-height:1.2}
+.learning-path .path-version{text-combine-upright:all;letter-spacing:0;margin-top:.5em}
+.learning-path .num:focus-visible{outline:2px solid white;outline-offset:-4px}
+.learning-path .path-panel{position:relative;flex:0 0 auto;width:0;max-width:0;height:56vh;overflow:hidden;opacity:0;color:white;translate:0 var(--year-offset,9vh);transition:width .45s ease,max-width .45s ease,opacity .3s ease}
+.learning-path .path-panel.open{width:var(--panel-width);max-width:var(--panel-width);opacity:1}
+.learning-path .path-panel{--panel-width:min(44vw,640px)}
+.learning-path .path-clip{width:var(--panel-width);height:100%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.learning-path .path-body{padding:24px 32px;line-height:1.7;font:400 18px/1.7 Inter,'Microsoft YaHei',sans-serif;white-space:normal;word-break:normal;overflow-wrap:break-word}
+.learning-path .path-body h4{font-size:22px;margin:0 0 14px}
+.learning-path .path-body p{margin:8px 0}
+.learning-path .path-body ul{padding-left:1.3em}
+.learning-path .path-columns{display:flex;gap:32px}.learning-path .path-columns>*{flex:1;min-width:0}
+.learning-path .mesh-fallback{background:var(--brand-gradient)}
+@media(max-width:800px){
+ .learning-path .num{height:56vh;padding:0 4vw}
+ .learning-path .num b{left:calc(50% - 10px);font-size:clamp(64px,19vw,110px)!important}
+ .learning-path .num-i{position:absolute;top:0;left:4vw}
+ .learning-path .num-l{left:calc(50% + clamp(64px,19vw,110px)/2 - 7px);right:auto;font-size:12px!important;line-height:1.2!important}
+ .learning-path .path-panel{--panel-width:74vw}
+ .learning-path .path-body{padding:12px 18px;font-size:16px}
+ .learning-path .path-columns{display:block}
+}
+@media(prefers-reduced-motion:reduce){.learning-path .path-panel{transition:none}}

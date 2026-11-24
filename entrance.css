@@ -1,0 +1,25 @@
+/* Entrance controls are intentionally unconnected until destinations are supplied. */
+.quest-bridge{flex-wrap:wrap;--entrance-blue:#5264b0;--entrance-purple:#7053a0;--entrance-gap:18px;--entrance-height:58px;--entrance-radius:5px}
+.quest-bridge .entrance-row{flex:0 0 100%;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--entrance-gap);margin-top:34px}
+.entrance-button{position:relative;isolation:isolate;overflow:hidden;min-width:0;min-height:var(--entrance-height);padding:14px 22px;border:1px solid transparent;border-radius:var(--entrance-radius);background:linear-gradient(#fff,#fff) padding-box,linear-gradient(110deg,var(--entrance-blue),var(--entrance-purple)) border-box;color:var(--entrance-blue);font:500 16px/1.5 'Inter','Microsoft YaHei',sans-serif;letter-spacing:.04em;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.entrance-button span{position:relative;z-index:1}
+.entrance-button:hover{transform:translateY(-2px);box-shadow:0 4px 12px #5264b014}
+.entrance-button:active{transform:translateY(0)}
+.entrance-button:focus-visible{outline:3px solid var(--entrance-blue);outline-offset:4px}
+.entrance-web{background:#111;color:#fff;border-color:#111}
+.entrance-web::before{content:'';position:absolute;inset:0;z-index:-1;opacity:0;background:url('assets/miee/entrance/example1.png') center/cover no-repeat}
+/* A fixed contrast veil keeps the label readable throughout the flash. */
+.entrance-web::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:#0006}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.entrance-web:hover::before{opacity:1;animation:entrance-flash .64s step-end infinite}}
+@keyframes entrance-flash{
+0%{background-image:url('assets/miee/entrance/example1.png');background-size:180%;background-position:20% 30%}
+12.5%{background-image:url('assets/miee/entrance/example2.png');background-size:260%;background-position:50% 45%}
+25%{background-image:url('assets/miee/entrance/example3.png');background-size:150%;background-position:80% 20%}
+37.5%{background-image:url('assets/miee/entrance/example4.png');background-size:320%;background-position:45% 55%}
+50%{background-image:url('assets/miee/entrance/example2.png');background-size:140%;background-position:10% 70%}
+62.5%{background-image:url('assets/miee/entrance/example1.png');background-size:300%;background-position:70% 40%}
+75%{background-image:url('assets/miee/entrance/example4.png');background-size:200%;background-position:30% 80%}
+87.5%{background-image:url('assets/miee/entrance/example3.png');background-size:240%;background-position:60% 10%}
+}
+@media(max-width:760px){.quest-bridge .entrance-row{grid-template-columns:1fr;gap:12px;margin-top:20px}.quest-bridge{--entrance-height:54px}.entrance-button{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.entrance-button{transition:none}.entrance-button:hover{transform:none}.entrance-web:hover::before,.entrance-web:focus-visible::before{opacity:1;animation:none;background-size:cover;background-position:center}}
