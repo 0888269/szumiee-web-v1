@@ -1,0 +1,71 @@
+{
+  "Account": {
+    "accountId": "string｜唯一账号标识；其余字段与此关联",
+    "login": {
+      "username": "string｜登录用户名",
+      "password": "string｜密码"
+    },
+    "personal": {
+      "name": "string｜姓名",
+      "avatar": "string | null｜头像；null用姓氏代替",
+      "school": "string｜学校",
+      "major": "string｜专业",
+      "grade": "string｜年级",
+      "studentNumber": "string | null｜学号；没有学号时为空",
+      "department": "string｜所属部门",
+      "trainingStatus": "string｜当前培训或退出状态",
+      "engineerLevel": "string｜已经正式认定的工程师等级",
+      "roles": "Array<'student' | 'ta' | 'mgmt'>｜身份：学员/助教/部门管理",
+      "teachingAssignments": [
+        {
+          "courseId": "string｜该账号担任助教的具体课程唯一 ID；引用自启哲",
+          "startedAt": "string｜开始担任这门课程助教的时间"
+        }
+      ]
+    },
+    "learning": {
+      "routeId": "string｜该账号采用的培养路线唯一 ID；引用自启哲",
+      "courses": [
+        {
+          "courseId": "string｜该账号学习的课程唯一 ID；引用自启哲",
+          "completed": "boolean｜该账号是否完成这门课程的全部章节；",
+          "chapterCompletion": "Record<string, boolean>｜章节，是否完成",
+          "assignmentId": "string | null｜该账号在这门课程对应的大作业实例 ID；引用自启哲",
+          "assistantAccountId": "string | null｜这门课为该账号指定的助教账号 ID",
+          "startedAt": "string | null｜该账号开始学习该课程的时间",
+          "finishedAt": "string | null｜该账号完成该课程的时间"
+        }
+      ]
+    },
+    "achievements": {
+      "certifications": [
+        {
+          "certificationId": "string｜关联的工程师等级认定实体 ID；引用自兆焯",
+          "level": "string｜申请认定的工程师等级",
+          "granted": "boolean｜该等级是否已正式通过认定",
+          "grantedAt": "string | null｜完成正式认定的时间",
+          "approvedByName": "string | null｜最终通过认定的审批人姓名",
+          "certificate": "string | null｜该账号电子证书的引用或地址"
+        }
+      ],
+      "badgeIds": "string[]｜该账号获得的徽章 ID；展示信息从徽章实体读取；引用自兆焯"
+    },
+    "receivedMessages": [
+      {
+        "messageId": "string｜该账号收到的消息实体 ID；引用自吴颖",
+        "isRead": "boolean｜该账号是否已读这条消息",
+        "isDeleted": "boolean｜该账号是否删除或隐藏这条消息"
+      }
+    ],
+    "settings": {
+      "theme": "'light' | 'dark'｜该账号选择的浅色或深色主题",
+      "layout": "'standard' | 'wide'｜该账号选择的内容宽度",
+      "notificationPrefs": {
+        "master": "boolean｜总推送开关",
+        "forum": "boolean｜论坛消息推送开关",
+        "learning": "boolean｜学习消息推送开关",
+        "agent": "boolean｜Agent 消息推送开关"
+      }
+    }
+  }
+}

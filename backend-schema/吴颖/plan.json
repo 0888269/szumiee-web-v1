@@ -1,0 +1,9 @@
+{
+  "基本信息": {                     // 规划自身的属性，一条规划只属于一个人
+    "id": "string",                 // 规划唯一ID，格式 plan_ + 随机串，供账号侧规划数组引用
+    "account_id": "string",         // 所属人ID，指向 account.id；规划与待办互不关联，只认人不认任务（与“人”实体的id字段对齐！）
+    "level": "string",              // 时间层级，决定归到哪张卡片：year 本年 / month 本月 / week 本周 / today 今天
+    "content": "string",            // 规划内容，一句话目标，前端按层级分组展示
+    "date": "string"                // 目标日期，格式 YYYY-MM-DD；只记日期不做范围，前端不用日历控件
+  }
+}
