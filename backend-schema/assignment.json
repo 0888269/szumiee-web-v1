@@ -1,10 +1,9 @@
 {
+  "实体": "大作业",
+  "物理表": "assignment",
+  "说明": "大作业的共享定义见 共享定义字段/assignment_shared.json；每条大作业记录维护一份共享定义，适用学员复用，学生提交实例单独存于 submissions。",
   "共享定义引用": "./共享定义字段/assignment_shared.json",
   "字段": [
-    {
-      "$ref": "./共享定义字段/assignment_shared.json",
-      "引用类型": "顶层共享字段"
-    },
     {
       "字段名": "submissions",
       "类型": "object<string, Submission>",
@@ -16,13 +15,13 @@
   "嵌套类型": {
     "Submission": [
       {
-        "字段名": "submissionid",
+        "字段名": "submission_id",
         "类型": "string",
         "说明": "学生提交实例随机唯一 ID。",
         "必填": true
       },
       {
-        "字段名": "studentaccountid",
+        "字段名": "student_account_id",
         "类型": "string",
         "说明": "所属学生 account ID，应与 submissions 的键一致。",
         "必填": true
@@ -102,7 +101,7 @@
     ],
     "MaterialReview": [
       {
-        "字段名": "revieweraccountid",
+        "字段名": "reviewer_account_id",
         "类型": "string",
         "说明": "材料审核助教 account ID；由学生 account 中该课程的助教映射确定。",
         "必填": true
@@ -146,7 +145,7 @@
         "必填": true
       },
       {
-        "字段名": "presentationtaaccountid",
+        "字段名": "presentation_ta_account_id",
         "类型": "string | null",
         "说明": "听汇报的助教 account ID，可在安排时填写。",
         "必填": false
@@ -170,7 +169,7 @@
         "必填": false
       },
       {
-        "字段名": "batchid",
+        "字段名": "batch_id",
         "类型": "string | null",
         "说明": "批次标识；可与批次展示名称分开。",
         "必填": false
@@ -190,7 +189,7 @@
     ],
     "PresentationResult": [
       {
-        "字段名": "revieweraccountid",
+        "字段名": "reviewer_account_id",
         "类型": "string",
         "说明": "听汇报并评分的助教 account ID。",
         "必填": true
@@ -222,7 +221,7 @@
     ],
     "CriterionScore": [
       {
-        "字段名": "criterionid",
+        "字段名": "criterion_id",
         "类型": "string",
         "说明": "对应评分维度 ID。",
         "必填": true
@@ -242,7 +241,7 @@
         "必填": true
       },
       {
-        "字段名": "operatoraccountid",
+        "字段名": "operator_account_id",
         "类型": "string",
         "说明": "操作人 account ID。",
         "必填": true
@@ -272,5 +271,11 @@
         "必填": false
       }
     ]
-  }
+  },
+  "规则": [
+    "submissions 按学生 account_id 索引，键必须与 Submission.student_account_id 一致。",
+    "每个学生提交实例有独立 submission_id，状态与流转记录互不覆盖。",
+    "材料审核、汇报排期、汇报结果均以 account_id 记录操作人，姓名字段仅作历史快照。",
+    "flow_records 按发生顺序追加，details 保存当次材料与评分快照，重新提交不覆盖历史。"
+  ]
 }

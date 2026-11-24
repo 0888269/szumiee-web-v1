@@ -1,41 +1,42 @@
 {
+  "实体": "adminAccount",
+  "物理表": "admin_account",
+  "说明": "管理端独立登录账号与业务角色表；与学员 account 分开。",
   "schema_version": "2026-11-07",
-  "entity": "adminAccount",
   "source_document": "卓工协会系统 · 实体字段逻辑详解（2026-11-06 会议 · 结合 PC 原型）.md",
-  "description": "管理端独立登录账号与业务角色表；与学员 account 分开。",
-  "fields": [
+  "字段": [
     {
-      "name": "admin_account_id",
-      "type": "string",
-      "required": true,
-      "description": "管理员账号唯一 ID；字段名明确区分实体。",
-      "unique": true
+      "字段名": "admin_account_id",
+      "类型": "string",
+      "必填": true,
+      "说明": "管理员账号唯一 ID；字段名明确区分实体。",
+      "唯一": true
     },
     {
-      "name": "name",
-      "type": "string",
-      "required": true,
-      "description": "管理员显示姓名。"
+      "字段名": "name",
+      "类型": "string",
+      "必填": true,
+      "说明": "管理员显示姓名。"
     },
     {
-      "name": "account",
-      "type": "string",
-      "required": true,
-      "description": "管理端登录账号。",
-      "unique": true
+      "字段名": "account",
+      "类型": "string",
+      "必填": true,
+      "说明": "管理端登录账号。",
+      "唯一": true
     },
     {
-      "name": "password",
-      "type": "string",
-      "required": true,
-      "description": "登录密码输入字段；写入后仅保存安全哈希，接口不得返回明文。",
+      "字段名": "password",
+      "类型": "string",
+      "必填": true,
+      "说明": "登录密码输入字段；写入后仅保存安全哈希，接口不得返回明文。",
       "write_only": true,
       "storage_type": "password_hash"
     },
     {
-      "name": "role",
-      "type": "string",
-      "required": true,
+      "字段名": "role",
+      "类型": "string",
+      "必填": true,
       "enum": [
         "super_admin",
         "admin"
@@ -44,10 +45,10 @@
         "super_admin": "终极管理员",
         "admin": "普通管理员"
       },
-      "description": "角色机器值。"
+      "说明": "角色机器值。"
     }
   ],
-  "permissions": {
+  "权限": {
     "super_admin": [
       "创建、停用和管理管理员账号",
       "创建和维护徽章定义",
@@ -62,7 +63,7 @@
       "最高等级手工授予"
     ]
   },
-  "constraints": [
+  "规则": [
     "只有 super_admin 可以创建、停用或管理 adminAccount；普通 admin 不能新建管理员账户。",
     "后台管理员不承担一级审核；一级审核身份与权限由其他端对应账号体系定义。",
     "teacher 角色已删除；最终确认和最终驳回由 admin 或 super_admin 执行。",
@@ -73,4 +74,3 @@
     "admin_account_id 与 account 必须唯一；role 必须使用枚举机器值。"
   ]
 }
-
